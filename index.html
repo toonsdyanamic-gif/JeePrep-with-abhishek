@@ -3,14 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JEE Prep Hub | Learn Math with Abhishek Sir</title>
+    <title>PrepHub | JEE, NEET & MHT CET Prep by Abhishek Sir</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         /* Base Reset & Variables */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
         :root {
@@ -19,6 +28,8 @@
             --accent: #ff9900;
             --light-bg: #f8f9fa;
             --dark-text: #2c3e50;
+            --neet-color: #00897b;
+            --mht-color: #6a1b9a;
         }
 
         body {
@@ -47,10 +58,13 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-size: 1.6rem;
+            font-weight: 700;
             color: #fff;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .logo span {
@@ -79,7 +93,7 @@
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
             text-align: center;
-            padding: 4rem 1rem;
+            padding: 3.5rem 1rem;
         }
 
         .hero h1 {
@@ -88,8 +102,8 @@
         }
 
         .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
+            font-size: 1.1rem;
+            max-width: 650px;
             margin: 0 auto 1.5rem auto;
             color: #e0e0e0;
         }
@@ -111,13 +125,13 @@
         }
 
         .founder-img-container {
-            flex: 1 1 280px;
+            flex: 1 1 250px;
             text-align: center;
         }
 
         .founder-img {
-            width: 250px;
-            height: 250px;
+            width: 220px;
+            height: 220px;
             border-radius: 50%;
             object-fit: cover;
             border: 5px solid var(--accent);
@@ -128,28 +142,36 @@
             flex: 2 1 400px;
         }
 
-        .founder-info h2 {
-            font-size: 2rem;
+        .founder-name {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.8rem;
+            font-weight: 700;
             color: var(--primary);
-            margin-bottom: 0.3rem;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
         }
 
         .founder-info .title {
             color: var(--accent);
-            font-weight: bold;
-            font-size: 1.1rem;
+            font-weight: 600;
+            font-size: 1.05rem;
             margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .founder-info p {
             margin-bottom: 1rem;
             color: #555;
+            font-size: 0.95rem;
         }
 
         .founder-stats {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             margin-top: 1rem;
+            flex-wrap: wrap;
         }
 
         .stat-box {
@@ -157,12 +179,18 @@
             padding: 0.8rem 1.2rem;
             border-radius: 6px;
             border-left: 4px solid var(--primary);
+            flex: 1;
+            min-width: 130px;
         }
 
         .stat-box strong {
             display: block;
             font-size: 1.2rem;
             color: var(--primary);
+        }
+
+        .stat-box span {
+            font-size: 0.85rem;
         }
 
         /* Container Section */
@@ -174,49 +202,80 @@
 
         .section-title {
             text-align: center;
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
             color: var(--primary);
         }
 
-        /* Subject Tabs */
-        .tab-buttons {
+        /* Exam Selection Cards Header */
+        .exam-selector {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 20px;
             margin-bottom: 2.5rem;
             flex-wrap: wrap;
         }
 
-        .tab-btn {
+        .exam-card-btn {
             background: white;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            padding: 0.6rem 1.8rem;
-            font-size: 1rem;
-            font-weight: bold;
-            border-radius: 25px;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
             cursor: pointer;
             transition: all 0.3s ease;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+            min-width: 200px;
         }
 
-        .tab-btn.active, .tab-btn:hover {
-            background: var(--primary);
-            color: white;
+        .exam-card-btn i {
+            font-size: 1.8rem;
+            color: var(--primary);
         }
 
-        /* Chapter Modules */
-        .subject-content {
+        .exam-card-btn .exam-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 2px;
+        }
+
+        .exam-card-btn .exam-info p {
+            font-size: 0.8rem;
+            color: #777;
+        }
+
+        .exam-card-btn.active-jee {
+            border-color: var(--primary);
+            background: #eef4ff;
+        }
+        .exam-card-btn.active-jee i { color: var(--primary); }
+
+        .exam-card-btn.active-neet {
+            border-color: var(--neet-color);
+            background: #e0f2f1;
+        }
+        .exam-card-btn.active-neet i { color: var(--neet-color); }
+
+        .exam-card-btn.active-mht {
+            border-color: var(--mht-color);
+            background: #f3e5f5;
+        }
+        .exam-card-btn.active-mht i { color: var(--mht-color); }
+
+        /* Exam Content Blocks */
+        .exam-content {
             display: none;
         }
 
-        .subject-content.active {
+        .exam-content.active {
             display: block;
         }
 
+        /* Chapter Cards Grid */
         .chapter-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
             gap: 20px;
         }
 
@@ -231,9 +290,12 @@
             border-top: 4px solid var(--primary);
         }
 
+        .chapter-card.neet-card { border-top-color: var(--neet-color); }
+        .chapter-card.mht-card { border-top-color: var(--mht-color); }
+
         .chapter-card h4 {
-            color: var(--primary);
-            font-size: 1.15rem;
+            color: var(--dark-text);
+            font-size: 1.1rem;
             margin-bottom: 0.8rem;
         }
 
@@ -247,13 +309,17 @@
         .res-btn {
             flex: 1;
             min-width: 80px;
-            padding: 0.4rem 0.6rem;
+            padding: 0.45rem 0.5rem;
             text-align: center;
             border-radius: 4px;
-            font-size: 0.82rem;
-            font-weight: bold;
+            font-size: 0.8rem;
+            font-weight: 600;
             text-decoration: none;
             transition: opacity 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
         }
 
         .res-btn:hover {
@@ -273,7 +339,7 @@
             margin-top: 4rem;
         }
 
-        /* Mobile Layout */
+        /* Responsive Layout */
         @media (max-width: 768px) {
             .founder-card {
                 text-align: center;
@@ -285,6 +351,12 @@
             .nav-links {
                 display: none;
             }
+            .founder-name {
+                font-size: 2.2rem;
+            }
+            .exam-selector {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -293,34 +365,35 @@
     <!-- Navigation Header -->
     <header>
         <nav>
-            <a href="#" class="logo">JEE<span>Prep</span>Hub</a>
+            <a href="#" class="logo">
+                <i class="fa-solid fa-graduation-cap" style="color: var(--accent);"></i>
+                Prep<span>Hub</span>
+            </a>
             <ul class="nav-links">
                 <li><a href="#founder">About Founder</a></li>
-                <li><a href="#chapters">Chapter Resources</a></li>
+                <li><a href="#exams">Select Exam</a></li>
             </ul>
         </nav>
     </header>
 
     <!-- Hero Banner -->
     <section class="hero">
-        <h1>Master JEE Main & Advanced</h1>
-        <p>Access Chapter-wise Formula Sheets, Daily Practice Problems (DPPs), and Past Year Questions (PYQs).</p>
+        <h1>Crack JEE, NEET & MHT CET</h1>
+        <p>Access Chapter-wise Formula Sheets, Daily Practice Problems (DPPs), and 10+ Years Previous Year Questions (PYQs).</p>
     </section>
 
     <!-- Founder Section (Abhishek Sir) -->
     <section class="founder-section" id="founder">
         <div class="founder-card">
             <div class="founder-img-container">
-                <!-- Replace 'src' attribute below with Abhishek Sir's image file/link -->
-                <img src="https://via.placeholder.com/250" alt="Abhishek Sir - Math Faculty" class="founder-img">
+                <img src="https://via.placeholder.com/220" alt="Abhishek Sir - Math Faculty" class="founder-img">
             </div>
             <div class="founder-info">
-                <h2>Abhishek Sir</h2>
+                <h2 class="founder-name">Abhishek Sir</h2>
                 <div class="title">Founder & Head of Mathematics</div>
                 <p>
-                    Welcome to JEE Prep Hub! With over 10+ years of teaching experience in mentoring IIT-JEE aspirants, 
-                    my mission is to make Mathematics simple, conceptual, and scoring. Mathematics isn't about memorizing 
-                    formulas—it's about logical problem-solving and smart shortcuts.
+                    Welcome to Prep Hub! With over 10+ years of teaching experience in mentoring competitive examination aspirants, 
+                    my goal is to help students conquer JEE, NEET, and MHT CET with strong fundamentals, logical problem-solving techniques, and smart revision shortcuts.
                 </p>
                 <div class="founder-stats">
                     <div class="stat-box">
@@ -329,250 +402,168 @@
                     </div>
                     <div class="stat-box">
                         <strong>5000+</strong>
-                        <span>IITians Mentored</span>
+                        <span>Selection Track Record</span>
                     </div>
                     <div class="stat-box">
-                        <strong>Maths</strong>
-                        <span>Specialist</span>
+                        <strong>All Exams</strong>
+                        <span>JEE | NEET | CET</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Chapter Resources Section -->
-    <section class="container" id="chapters">
-        <h2 class="section-title">JEE Chapter Wise Resources</h2>
+    <!-- Exam Selection & Resources Section -->
+    <section class="container" id="exams">
+        <h2 class="section-title">Select Your Competitive Exam</h2>
         
-        <!-- Subject Selection Tabs -->
-        <div class="tab-buttons">
-            <button class="tab-btn active" onclick="openSubject('maths', this)">Mathematics</button>
-            <button class="tab-btn" onclick="openSubject('physics', this)">Physics</button>
-            <button class="tab-btn" onclick="openSubject('chemistry', this)">Chemistry</button>
+        <!-- Exam Switcher Cards with Logos -->
+        <div class="exam-selector">
+            <div class="exam-card-btn active-jee" onclick="switchExam('jee', this, 'active-jee')">
+                <i class="fa-solid fa-atom"></i>
+                <div class="exam-info">
+                    <h3>JEE Main & Adv</h3>
+                    <p>Physics, Chem, Math</p>
+                </div>
+            </div>
+
+            <div class="exam-card-btn" onclick="switchExam('neet', this, 'active-neet')">
+                <i class="fa-solid fa-stethoscope"></i>
+                <div class="exam-info">
+                    <h3>NEET (UG)</h3>
+                    <p>Physics, Chem, Biology</p>
+                </div>
+            </div>
+
+            <div class="exam-card-btn" onclick="switchExam('mhtcet', this, 'active-mht')">
+                <i class="fa-solid fa-building-columns"></i>
+                <div class="exam-info">
+                    <h3>MHT CET</h3>
+                    <p>State Board Pattern</p>
+                </div>
+            </div>
         </div>
 
-        <!-- MATHEMATICS CHAPTERS -->
-        <div id="maths" class="subject-content active">
+        <!-- ==================== JEE CONTENT ==================== -->
+        <div id="jee" class="exam-content active">
+            <h3 style="margin-bottom: 1.5rem; color: var(--primary);"><i class="fa-solid fa-book-bookmark"></i> JEE Exam Chapter Resources</h3>
             <div class="chapter-grid">
-                <!-- Card 1 -->
                 <div class="chapter-card">
-                    <h4>Sets, Relations & Functions</h4>
+                    <h4>Mathematics: Calculus & Integration</h4>
                     <div class="resource-links">
-                        <a href="#" class="res-btn btn-formula">Formula Sheet</a>
-                        <a href="#" class="res-btn btn-dpp">DPP PDF</a>
-                        <a href="#" class="res-btn btn-pyq">PYQs (10 Yrs)</a>
+                        <a href="#" class="res-btn btn-formula"><i class="fa-solid fa-file-lines"></i> Formula</a>
+                        <a href="#" class="res-btn btn-dpp"><i class="fa-solid fa-pen-to-square"></i> DPP</a>
+                        <a href="#" class="res-btn btn-pyq"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a>
                     </div>
                 </div>
-                <!-- Card 2 -->
                 <div class="chapter-card">
-                    <h4>Complex Numbers & Quadratic Eq.</h4>
+                    <h4>Mathematics: Vectors & 3D Geometry</h4>
                     <div class="resource-links">
-                        <a href="#" class="res-btn btn-formula">Formula Sheet</a>
-                        <a href="#" class="res-btn btn-dpp">DPP PDF</a>
-                        <a href="#" class="res-btn btn-pyq">PYQs (10 Yrs)</a>
+                        <a href="#" class="res-btn btn-formula"><i class="fa-solid fa-file-lines"></i> Formula</a>
+                        <a href="#" class="res-btn btn-dpp"><i class="fa-solid fa-pen-to-square"></i> DPP</a>
+                        <a href="#" class="res-btn btn-pyq"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a>
                     </div>
                 </div>
-                <!-- Card 3 -->
                 <div class="chapter-card">
-                    <h4>Matrices & Determinants</h4>
+                    <h4>Physics: Electrodynamics & Magnetism</h4>
                     <div class="resource-links">
-                        <a href="#" class="res-btn btn-formula">Formula Sheet</a>
-                        <a href="#" class="res-btn btn-dpp">DPP PDF</a>
-                        <a href="#" class="res-btn btn-pyq">PYQs (10 Yrs)</a>
+                        <a href="#" class="res-btn btn-formula"><i class="fa-solid fa-file-lines"></i> Formula</a>
+                        <a href="#" class="res-btn btn-dpp"><i class="fa-solid fa-pen-to-square"></i> DPP</a>
+                        <a href="#" class="res-btn btn-pyq"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a>
                     </div>
                 </div>
-                <!-- Card 4 -->
                 <div class="chapter-card">
-                    <h4>Permutations & Combinations</h4>
+                    <h4>Physics: Mechanics & Rotational Motion</h4>
                     <div class="resource-links">
-                        <a href="#" class="res-btn btn-formula">Formula Sheet</a>
-                        <a href="#" class="res-btn btn-dpp">DPP PDF</a>
-                        <a href="#" class="res-btn btn-pyq">PYQs (10 Yrs)</a>
+                        <a href="#" class="res-btn btn-formula"><i class="fa-solid fa-file-lines"></i> Formula</a>
+                        <a href="#" class="res-btn btn-dpp"><i class="fa-solid fa-pen-to-square"></i> DPP</a>
+                        <a href="#" class="res-btn btn-pyq"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a>
                     </div>
                 </div>
-                <!-- Card 5 -->
                 <div class="chapter-card">
-                    <h4>Calculus (Limits, Continuity & Diff.)</h4>
+                    <h4>Chemistry: Organic Reactions & Mechanisms</h4>
                     <div class="resource-links">
-                        <a href="#" class="res-btn btn-formula">Formula Sheet</a>
-                        <a href="#" class="res-btn btn-dpp">DPP PDF</a>
-                        <a href="#" class="res-btn btn-pyq">PYQs (10 Yrs)</a>
+                        <a href="#" class="res-btn btn-formula"><i class="fa-solid fa-file-lines"></i> Formula</a>
+                        <a href="#" class="res-btn btn-dpp"><i class="fa-solid fa-pen-to-square"></i> DPP</a>
+                        <a href="#" class="res-btn btn-pyq"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a>
                     </div>
                 </div>
-                <!-- Card 6 -->
                 <div class="chapter-card">
-                    <h4>Integral Calculus (Definite/Indefinite)</h4>
+                    <h4>Chemistry: Physical Chemistry & Equilibrium</h4>
                     <div class="resource-links">
-                        <a href="#" class="res-btn btn-formula">Formula Sheet</a>
-                        <a href="#" class="res-btn btn-dpp">DPP PDF</a>
-                        <a href="#" class="res-btn btn-pyq">PYQs (10 Yrs)</a>
-                    </div>
-                </div>
-                <!-- Card 7 -->
-                <div class="chapter-card">
-                    <h4>Vector Algebra & 3D Geometry</h4>
-                    <div class="resource-links">
-                        <a href="#" class="res-btn btn-formula">Formula Sheet</a>
-                        <a href="#" class="res-btn btn-dpp">DPP PDF</a>
-                        <a href="#" class="res-btn btn-pyq">PYQs (10 Yrs)</a>
-                    </div>
-                </div>
-                <!-- Card 8 -->
-                <div class="chapter-card">
-                    <h4>Coordinate Geometry (Conics & Lines)</h4>
-                    <div class="resource-links">
-                        <a href="#" class="res-btn btn-formula">Formula Sheet</a>
-                        <a href="#" class="res-btn btn-dpp">DPP PDF</a>
-                        <a href="#" class="res-btn btn-pyq">PYQs (10 Yrs)</a>
-                    </div>
-                </div>
-                <!-- Card 9 -->
-                <div class="chapter-card">
-                    <h4>Probability & Statistics</h4>
-                    <div class="resource-links">
-                        <a href="#" class="res-btn btn-formula">Formula Sheet</a>
-                        <a href="#" class="res-btn btn-dpp">DPP PDF</a>
-                        <a href="#" class="res-btn btn-pyq">PYQs (10 Yrs)</a>
+                        <a href="#" class="res-btn btn-formula"><i class="fa-solid fa-file-lines"></i> Formula</a>
+                        <a href="#" class="res-btn btn-dpp"><i class="fa-solid fa-pen-to-square"></i> DPP</a>
+                        <a href="#" class="res-btn btn-pyq"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- PHYSICS CHAPTERS -->
-        <div id="physics" class="subject-content">
+        <!-- ==================== NEET CONTENT ==================== -->
+        <div id="neet" class="exam-content">
+            <h3 style="margin-bottom: 1.5rem; color: var(--neet-color);"><i class="fa-solid fa-notes-medical"></i> NEET Exam Chapter Resources</h3>
             <div class="chapter-grid">
-                <div class="chapter-card">
-                    <h4>Kinematics & Laws of Motion</h4>
+                <div class="chapter-card neet-card">
+                    <h4>Biology: Human Physiology</h4>
                     <div class="resource-links">
-                        <a href="#" class="res-btn btn-formula">Formula Sheet</a>
-                        <a href="#" class="res-btn btn-dpp">DPP PDF</a>
-                        <a href="#" class="res-btn btn-pyq">PYQs (10 Yrs)</a>
+                        <a href="#" class="res-btn btn-formula"><i class="fa-solid fa-file-lines"></i> Notes</a>
+                        <a href="#" class="res-btn btn-dpp"><i class="fa-solid fa-pen-to-square"></i> DPP</a>
+                        <a href="#" class="res-btn btn-pyq"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a>
                     </div>
                 </div>
-                <div class="chapter-card">
-                    <h4>Work, Energy & Power</h4>
+                <div class="chapter-card neet-card">
+                    <h4>Biology: Genetics & Evolution</h4>
                     <div class="resource-links">
-                        <a href="#" class="res-btn btn-formula">Formula Sheet</a>
-                        <a href="#" class="res-btn btn-dpp">DPP PDF</a>
-                        <a href="#" class="res-btn btn-pyq">PYQs (10 Yrs)</a>
+                        <a href="#" class="res-btn btn-formula"><i class="fa-solid fa-file-lines"></i> Notes</a>
+                        <a href="#" class="res-btn btn-dpp"><i class="fa-solid fa-pen-to-square"></i> DPP</a>
+                        <a href="#" class="res-btn btn-pyq"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a>
                     </div>
                 </div>
-                <div class="chapter-card">
-                    <h4>Rotational Motion & Gravitation</h4>
+                <div class="chapter-card neet-card">
+                    <h4>Physics: Optics & Modern Physics</h4>
                     <div class="resource-links">
-                        <a href="#" class="res-btn btn-formula">Formula Sheet</a>
-                        <a href="#" class="res-btn btn-dpp">DPP PDF</a>
-                        <a href="#" class="res-btn btn-pyq">PYQs (10 Yrs)</a>
+                        <a href="#" class="res-btn btn-formula"><i class="fa-solid fa-file-lines"></i> Formula</a>
+                        <a href="#" class="res-btn btn-dpp"><i class="fa-solid fa-pen-to-square"></i> DPP</a>
+                        <a href="#" class="res-btn btn-pyq"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a>
                     </div>
                 </div>
-                <div class="chapter-card">
-                    <h4>Electrostatics & Current Electricity</h4>
+                <div class="chapter-card neet-card">
+                    <h4>Chemistry: NCERT Inorganic Reactions</h4>
                     <div class="resource-links">
-                        <a href="#" class="res-btn btn-formula">Formula Sheet</a>
-                        <a href="#" class="res-btn btn-dpp">DPP PDF</a>
-                        <a href="#" class="res-btn btn-pyq">PYQs (10 Yrs)</a>
-                    </div>
-                </div>
-                <div class="chapter-card">
-                    <h4>Magnetism & EMI / AC</h4>
-                    <div class="resource-links">
-                        <a href="#" class="res-btn btn-formula">Formula Sheet</a>
-                        <a href="#" class="res-btn btn-dpp">DPP PDF</a>
-                        <a href="#" class="res-btn btn-pyq">PYQs (10 Yrs)</a>
-                    </div>
-                </div>
-                <div class="chapter-card">
-                    <h4>Optics (Ray & Wave Optics)</h4>
-                    <div class="resource-links">
-                        <a href="#" class="res-btn btn-formula">Formula Sheet</a>
-                        <a href="#" class="res-btn btn-dpp">DPP PDF</a>
-                        <a href="#" class="res-btn btn-pyq">PYQs (10 Yrs)</a>
-                    </div>
-                </div>
-                <div class="chapter-card">
-                    <h4>Modern Physics & Semiconductors</h4>
-                    <div class="resource-links">
-                        <a href="#" class="res-btn btn-formula">Formula Sheet</a>
-                        <a href="#" class="res-btn btn-dpp">DPP PDF</a>
-                        <a href="#" class="res-btn btn-pyq">PYQs (10 Yrs)</a>
-                    </div>
-                </div>
-                <div class="chapter-card">
-                    <h4>Thermodynamics & KTG</h4>
-                    <div class="resource-links">
-                        <a href="#" class="res-btn btn-formula">Formula Sheet</a>
-                        <a href="#" class="res-btn btn-dpp">DPP PDF</a>
-                        <a href="#" class="res-btn btn-pyq">PYQs (10 Yrs)</a>
+                        <a href="#" class="res-btn btn-formula"><i class="fa-solid fa-file-lines"></i> Mindmap</a>
+                        <a href="#" class="res-btn btn-dpp"><i class="fa-solid fa-pen-to-square"></i> DPP</a>
+                        <a href="#" class="res-btn btn-pyq"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- CHEMISTRY CHAPTERS -->
-        <div id="chemistry" class="subject-content">
+        <!-- ==================== MHT CET CONTENT ==================== -->
+        <div id="mhtcet" class="exam-content">
+            <h3 style="margin-bottom: 1.5rem; color: var(--mht-color);"><i class="fa-solid fa-book-open"></i> MHT CET Chapter Resources</h3>
             <div class="chapter-grid">
-                <div class="chapter-card">
-                    <h4>Chemical Bonding & Atomic Structure</h4>
+                <div class="chapter-card mht-card">
+                    <h4>Mathematics: Trigonometric Functions & Line/Plane</h4>
                     <div class="resource-links">
-                        <a href="#" class="res-btn btn-formula">Formula Sheet</a>
-                        <a href="#" class="res-btn btn-dpp">DPP PDF</a>
-                        <a href="#" class="res-btn btn-pyq">PYQs (10 Yrs)</a>
+                        <a href="#" class="res-btn btn-formula"><i class="fa-solid fa-file-lines"></i> Formula</a>
+                        <a href="#" class="res-btn btn-dpp"><i class="fa-solid fa-pen-to-square"></i> DPP</a>
+                        <a href="#" class="res-btn btn-pyq"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a>
                     </div>
                 </div>
-                <div class="chapter-card">
-                    <h4>Thermodynamics & Equilibrium</h4>
+                <div class="chapter-card mht-card">
+                    <h4>Physics: Wave Optics & Kinetic Theory</h4>
                     <div class="resource-links">
-                        <a href="#" class="res-btn btn-formula">Formula Sheet</a>
-                        <a href="#" class="res-btn btn-dpp">DPP PDF</a>
-                        <a href="#" class="res-btn btn-pyq">PYQs (10 Yrs)</a>
+                        <a href="#" class="res-btn btn-formula"><i class="fa-solid fa-file-lines"></i> Formula</a>
+                        <a href="#" class="res-btn btn-dpp"><i class="fa-solid fa-pen-to-square"></i> DPP</a>
+                        <a href="#" class="res-btn btn-pyq"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a>
                     </div>
                 </div>
-                <div class="chapter-card">
-                    <h4>Electrochemistry & Kinetics</h4>
+                <div class="chapter-card mht-card">
+                    <h4>Chemistry: Coordination Chemistry & Polymers</h4>
                     <div class="resource-links">
-                        <a href="#" class="res-btn btn-formula">Formula Sheet</a>
-                        <a href="#" class="res-btn btn-dpp">DPP PDF</a>
-                        <a href="#" class="res-btn btn-pyq">PYQs (10 Yrs)</a>
-                    </div>
-                </div>
-                <div class="chapter-card">
-                    <h4>General Organic Chemistry (GOC)</h4>
-                    <div class="resource-links">
-                        <a href="#" class="res-btn btn-formula">Formula Sheet</a>
-                        <a href="#" class="res-btn btn-dpp">DPP PDF</a>
-                        <a href="#" class="res-btn btn-pyq">PYQs (10 Yrs)</a>
-                    </div>
-                </div>
-                <div class="chapter-card">
-                    <h4>Hydrocarbons & Haloalkanes</h4>
-                    <div class="resource-links">
-                        <a href="#" class="res-btn btn-formula">Formula Sheet</a>
-                        <a href="#" class="res-btn btn-dpp">DPP PDF</a>
-                        <a href="#" class="res-btn btn-pyq">PYQs (10 Yrs)</a>
-                    </div>
-                </div>
-                <div class="chapter-card">
-                    <h4>Aldehydes, Ketones & Amines</h4>
-                    <div class="resource-links">
-                        <a href="#" class="res-btn btn-formula">Formula Sheet</a>
-                        <a href="#" class="res-btn btn-dpp">DPP PDF</a>
-                        <a href="#" class="res-btn btn-pyq">PYQs (10 Yrs)</a>
-                    </div>
-                </div>
-                <div class="chapter-card">
-                    <h4>p-Block, d & f-Block Elements</h4>
-                    <div class="resource-links">
-                        <a href="#" class="res-btn btn-formula">Formula Sheet</a>
-                        <a href="#" class="res-btn btn-dpp">DPP PDF</a>
-                        <a href="#" class="res-btn btn-pyq">PYQs (10 Yrs)</a>
-                    </div>
-                </div>
-                <div class="chapter-card">
-                    <h4>Coordination Compounds</h4>
-                    <div class="resource-links">
-                        <a href="#" class="res-btn btn-formula">Formula Sheet</a>
-                        <a href="#" class="res-btn btn-dpp">DPP PDF</a>
-                        <a href="#" class="res-btn btn-pyq">PYQs (10 Yrs)</a>
+                        <a href="#" class="res-btn btn-formula"><i class="fa-solid fa-file-lines"></i> Formula</a>
+                        <a href="#" class="res-btn btn-dpp"><i class="fa-solid fa-pen-to-square"></i> DPP</a>
+                        <a href="#" class="res-btn btn-pyq"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a>
                     </div>
                 </div>
             </div>
@@ -582,27 +573,27 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; JEE Prep Hub - Guided by Abhishek Sir. All Rights Reserved.</p>
+        <p>&copy; Prep Hub - Guided by Abhishek Sir. All Rights Reserved.</p>
     </footer>
 
-    <!-- Tab Switching Script -->
+    <!-- Exam Switching Script -->
     <script>
-        function openSubject(subjectName, btnElement) {
-            // Hide all tab content
-            const contents = document.getElementsByClassName("subject-content");
+        function switchExam(examId, element, activeClass) {
+            // Hide all exam contents
+            const contents = document.getElementsByClassName("exam-content");
             for (let i = 0; i < contents.length; i++) {
                 contents[i].classList.remove("active");
             }
 
-            // Remove active class from buttons
-            const buttons = document.getElementsByClassName("tab-btn");
-            for (let i = 0; i < buttons.length; i++) {
-                buttons[i].classList.remove("active");
+            // Remove all active classes from selector cards
+            const cards = document.getElementsByClassName("exam-card-btn");
+            for (let i = 0; i < cards.length; i++) {
+                cards[i].classList.remove("active-jee", "active-neet", "active-mht");
             }
 
-            // Show current tab and highlight button
-            document.getElementById(subjectName).classList.add("active");
-            btnElement.classList.add("active");
+            // Display target exam content and add active styling to button
+            document.getElementById(examId).classList.add("active");
+            element.classList.add(activeClass);
         }
     </script>
 </body>
