@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JEEPrep | JEE, NEET & MHT CET Prep by Abhishek Sir</title>
+    <title>JEEPrep | JEE, NEET & MHT CET Prep</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,6 +36,7 @@
             line-height: 1.6;
             color: var(--dark-text);
             background-color: var(--light-bg);
+            position: relative;
         }
 
         /* Navigation Bar */
@@ -71,21 +72,123 @@
             color: var(--accent);
         }
 
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-
-        .nav-links a {
+        /* Hamburger Menu Icon */
+        .menu-icon {
+            font-size: 1.8rem;
+            cursor: pointer;
             color: white;
-            text-decoration: none;
-            font-weight: 500;
             transition: color 0.3s;
         }
 
-        .nav-links a:hover {
+        .menu-icon:hover {
             color: var(--accent);
+        }
+
+        /* Side Navigation Menu Drawer */
+        .side-menu {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            right: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.4s;
+            padding-top: 60px;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.5);
+        }
+
+        .side-menu a {
+            padding: 12px 32px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .side-menu a:hover {
+            color: #f1f1f1;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .side-menu .closebtn {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+            color: #818181;
+        }
+
+        .side-menu .closebtn:hover {
+            color: white;
+        }
+
+        /* Modal Popup Styles */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 3000; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.6); 
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 12% auto; 
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .close-modal {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-modal:hover {
+            color: black;
+        }
+
+        .modal-header {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
+        }
+
+        .modal-body p {
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info-item i {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-top: 3px;
         }
 
         /* Hero Section */
@@ -106,65 +209,6 @@
             max-width: 650px;
             margin: 0 auto 1.5rem auto;
             color: #e0e0e0;
-        }
-
-        /* Founder Section */
-        .founder-section {
-            background: white;
-            padding: 3rem 1rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .founder-card {
-            max-width: 900px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            gap: 2.5rem;
-            flex-wrap: wrap;
-        }
-
-        .founder-img-container {
-            flex: 1 1 220px;
-            text-align: center;
-        }
-
-        .founder-img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid var(--accent);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-
-        .founder-info {
-            flex: 2 1 400px;
-        }
-
-        .founder-name {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 2.8rem;
-            font-weight: 700;
-            color: var(--primary);
-            letter-spacing: 0.5px;
-            margin-bottom: 0.2rem;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
-        }
-
-        .founder-info .title {
-            color: var(--accent);
-            font-weight: 600;
-            font-size: 1.05rem;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .founder-info p {
-            color: #555;
-            font-size: 0.98rem;
-            line-height: 1.7;
         }
 
         /* Container Section */
@@ -358,18 +402,14 @@
             margin-top: 4rem;
         }
 
+        /* Keyframes */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         /* Responsive Layout */
         @media (max-width: 768px) {
-            .founder-card {
-                text-align: center;
-                flex-direction: column;
-            }
-            .nav-links {
-                display: none;
-            }
-            .founder-name {
-                font-size: 2.2rem;
-            }
             .exam-selector {
                 flex-direction: column;
             }
@@ -385,33 +425,62 @@
                 <i class="fa-solid fa-graduation-cap" style="color: var(--accent);"></i>
                 JEE<span>Prep</span>
             </a>
-            <ul class="nav-links">
-                <li><a href="#founder">About Founder</a></li>
-                <li><a href="#exams">Select Exam</a></li>
-            </ul>
+            <!-- Top Right 3-Bar Menu Icon -->
+            <div class="menu-icon" onclick="openNav()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
         </nav>
     </header>
+
+    <!-- Side Navigation Menu Drawer -->
+    <div id="sideNav" class="side-menu">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#" onclick="closeNav()"><i class="fa-solid fa-house"></i> Home</a>
+        <a onclick="openModal('founderModal')"><i class="fa-solid fa-user-tie"></i> About the Founder</a>
+        <a onclick="openModal('contactModal')"><i class="fa-solid fa-address-book"></i> Contact Us</a>
+    </div>
+
+    <!-- About Founder Modal -->
+    <div id="founderModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('founderModal')">&times;</span>
+            <div class="modal-header">About the Founder</div>
+            <div class="modal-body">
+                <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Abhishek Sahoo</h3>
+                <p>Welcome to JEEPrep! Guided by Abhishek Sahoo, our portal is dedicated to assisting students in excelling across JEE Main & Advanced, NEET, and MHT CET exams.</p>
+                <p>Our mission is to provide high-quality formula sheets, practice problems, and previous year question resources to streamline your exam preparation.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Us Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('contactModal')">&times;</span>
+            <div class="modal-header">Contact Us</div>
+            <div class="modal-body">
+                <div class="contact-info-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <div>
+                        <strong>Phone:</strong><br>
+                        <a href="tel:9668991936" style="color: #333; text-decoration: none;">9668991936</a>
+                    </div>
+                </div>
+                <div class="contact-info-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <strong>Address:</strong><br>
+                        BL 78 Basanti Colony, Rourkela
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Hero Banner -->
     <section class="hero">
         <h1>Crack JEE, NEET & MHT CET</h1>
         <p>Access Chapter-wise Formula Sheets, Daily Practice Problems (DPPs), and Previous Year Questions (PYQs).</p>
-    </section>
-
-    <!-- Founder Section (Abhishek Sir) -->
-    <section class="founder-section" id="founder">
-        <div class="founder-card">
-            <div class="founder-img-container">
-                <img src="https://via.placeholder.com/200" alt="Abhishek Sir - Math Faculty" class="founder-img">
-            </div>
-            <div class="founder-info">
-                <h2 class="founder-name">Abhishek Sir</h2>
-                <div class="title">Founder & Head of Mathematics</div>
-                <p>
-                    Welcome to JEEPrep! My goal is to help students conquer JEE, NEET, and MHT CET with strong fundamentals, logical problem-solving techniques, and smart revision shortcuts.
-                </p>
-            </div>
-        </div>
     </section>
 
     <!-- Exam Selection & Resources Section -->
@@ -621,22 +690,50 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; JEEPrep - Guided by Abhishek Sir. All Rights Reserved.</p>
+        <p>&copy; JEEPrep. All Rights Reserved.</p>
     </footer>
 
     <!-- Interactive Navigation Scripts -->
     <script>
+        // Side Nav Drawer Handlers
+        function openNav() {
+            document.getElementById("sideNav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("sideNav").style.width = "0";
+        }
+
+        // Modal Handlers
+        function openModal(modalId) {
+            closeNav();
+            document.getElementById(modalId).style.display = "block";
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        // Close modal if user clicks outside of it
+        window.onclick = function(event) {
+            const founderModal = document.getElementById('founderModal');
+            const contactModal = document.getElementById('contactModal');
+            if (event.target == founderModal) {
+                founderModal.style.display = "none";
+            }
+            if (event.target == contactModal) {
+                contactModal.style.display = "none";
+            }
+        }
+
         // Function to switch between Exam tabs (JEE, NEET, MHT CET)
         function switchExam(examId, element, activeClass) {
-            // Hide all exam contents
             const contents = document.querySelectorAll(".exam-content");
             contents.forEach(content => content.classList.remove("active"));
 
-            // Remove active classes from all top exam cards
             const cards = document.querySelectorAll(".exam-card-btn");
             cards.forEach(card => card.classList.remove("active-jee", "active-neet", "active-mht"));
 
-            // Show selected exam content & set card to active
             document.getElementById(examId).classList.add("active");
             element.classList.add(activeClass);
         }
@@ -645,15 +742,12 @@
         function switchSubject(examId, subjectId, btnElement) {
             const examContainer = document.getElementById(examId);
             
-            // Hide all subject contents inside the current exam container
             const subContents = examContainer.querySelectorAll(".subject-content");
             subContents.forEach(content => content.classList.remove("active"));
 
-            // Deactivate all subject buttons inside the current exam container
             const subButtons = examContainer.querySelectorAll(".sub-btn");
             subButtons.forEach(button => button.classList.remove("active"));
 
-            // Activate chosen subject panel and subject button
             const selectedSubject = document.getElementById(subjectId);
             if (selectedSubject) {
                 selectedSubject.classList.add("active");
