@@ -321,7 +321,7 @@
             flex-wrap: wrap;
         }
 
-        /* Black and White Realistic Button Styling */
+        /* Black and White Button Styling */
         .res-btn {
             flex: 1;
             min-width: 80px;
@@ -418,7 +418,7 @@
     <section class="container" id="exams">
         <h2 class="section-title">Select Your Competitive Exam</h2>
         
-        <!-- Exam Switcher Cards -->
+        <!-- Exam Switcher Bar -->
         <div class="exam-selector">
             <div class="exam-card-btn active-jee" onclick="switchExam('jee', this, 'active-jee')">
                 <i class="fa-solid fa-atom"></i>
@@ -457,109 +457,27 @@
             <!-- JEE Mathematics Chapters -->
             <div id="jee-maths" class="subject-content active">
                 <div class="chapter-grid">
-                    <div class="chapter-card">
-                        <h4>Sets, Relations & Functions</h4>
-                        <div class="resource-links">
-                            <a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a>
-                            <a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a>
-                            <a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a>
-                        </div>
-                    </div>
-                    <div class="chapter-card">
-                        <h4>Complex Numbers & Quadratic Eq.</h4>
-                        <div class="resource-links">
-                            <a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a>
-                            <a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a>
-                            <a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a>
-                        </div>
-                    </div>
-                    <div class="chapter-card">
-                        <h4>Calculus (Limits, Continuity & Diff.)</h4>
-                        <div class="resource-links">
-                            <a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a>
-                            <a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a>
-                            <a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a>
-                        </div>
-                    </div>
-                    <div class="chapter-card">
-                        <h4>Vector Algebra & 3D Geometry</h4>
-                        <div class="resource-links">
-                            <a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a>
-                            <a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a>
-                            <a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a>
-                        </div>
-                    </div>
+                    <div class="chapter-card"><h4>Sets, Relations & Functions</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
+                    <div class="chapter-card"><h4>Complex Numbers & Quadratic Equations</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
+                    <div class="chapter-card"><h4>Matrices & Determinants</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
+                    <div class="chapter-card"><h4>Permutations & Combinations</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
+                    <div class="chapter-card"><h4>Binomial Theorem</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
+                    <div class="chapter-card"><h4>Sequence & Series</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
+                    <div class="chapter-card"><h4>Limits, Continuity & Differentiability</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
+                    <div class="chapter-card"><h4>Application of Derivatives (AOD)</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
+                    <div class="chapter-card"><h4>Indefinite & Definite Integration</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
+                    <div class="chapter-card"><h4>Differential Equations</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
+                    <div class="chapter-card"><h4>Straight Lines & Circles</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
+                    <div class="chapter-card"><h4>Conic Sections (Parabola, Ellipse, Hyperbola)</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
+                    <div class="chapter-card"><h4>Vector Algebra & 3D Geometry</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
+                    <div class="chapter-card"><h4>Probability & Statistics</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
                 </div>
             </div>
 
             <!-- JEE Physics Chapters -->
             <div id="jee-physics" class="subject-content">
                 <div class="chapter-grid">
-                    <div class="chapter-card">
-                        <h4>Kinematics & Laws of Motion</h4>
-                        <div class="resource-links">
-                            <a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a>
-                            <a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a>
-                            <a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a>
-                        </div>
-                    </div>
-                    <div class="chapter-card">
-                        <h4>Electrostatics & Current Electricity</h4>
-                        <div class="resource-links">
-                            <a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a>
-                            <a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a>
-                            <a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a>
-                        </div>
-                    </div>
-                    <div class="chapter-card">
-                        <h4>Magnetism & Electromagnetic Induction</h4>
-                        <div class="resource-links">
-                            <a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a>
-                            <a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a>
-                            <a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- JEE Chemistry Chapters -->
-            <div id="jee-chemistry" class="subject-content">
-                <div class="chapter-grid">
-                    <div class="chapter-card">
-                        <h4>Chemical Bonding & Molecular Structure</h4>
-                        <div class="resource-links">
-                            <a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a>
-                            <a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a>
-                            <a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a>
-                        </div>
-                    </div>
-                    <div class="chapter-card">
-                        <h4>General Organic Chemistry (GOC)</h4>
-                        <div class="resource-links">
-                            <a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a>
-                            <a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a>
-                            <a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ==================== NEET SECTION ==================== -->
-        <div id="neet" class="exam-content">
-            <!-- NEET Subject Tabs -->
-            <div class="subject-tabs">
-                <button class="sub-btn neet-btn active" onclick="switchSubject('neet', 'neet-bio', this)">Biology</button>
-                <button class="sub-btn neet-btn" onclick="switchSubject('neet', 'neet-physics', this)">Physics</button>
-                <button class="sub-btn neet-btn" onclick="switchSubject('neet', 'neet-chemistry', this)">Chemistry</button>
-            </div>
-
-            <!-- NEET Biology Chapters -->
-            <div id="neet-bio" class="subject-content active">
-                <div class="chapter-grid">
-                    <div class="chapter-card neet-card">
-                        <h4>Human Physiology & Systems</h4>
-                        <div class="resource-links">
-                            <a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Notes</a>
-                            <a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a>
-                            <a href="#" class="res-bt
+                    <div class="chapter-card"><h4>Units, Measurements & Vectors</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
+                    <div class="chapter-card"><h4>Kinematics 1D & 2D</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
+                    <div class="chapter-card"><h4>Laws of Motion & Friction</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
+                    <div class="chapter-card"><h4>Work, Power & Energy</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-t
