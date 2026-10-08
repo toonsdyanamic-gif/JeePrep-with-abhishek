@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEEPrep | JEE, NEET & MHT CET Prep</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Base Reset & Variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary: #1e3c72;
+            --secondary: #2a5298;
+            --accent: #ff9900;
+            --light-bg: #f8f9fa;
+            --dark-text: #2c3e50;
+            --neet-color: #00897b;
+            --mht-color: #6a1b9a;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--light-bg);
+            position: relative;
+        }
+
+        /* Navigation Bar */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-link-btn {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link-btn:hover, .nav-link-btn.active-nav {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: var(--accent);
+        }
+
+        /* Hamburger Menu Icon */
+        .menu-icon {
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: white;
+            transition: color 0.3s;
+        }
+
+        .menu-icon:hover {
+            color: var(--accent);
+        }
+
+        /* Side Navigation Menu Drawer */
+        .side-menu {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            right: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.4s;
+            padding-top: 60px;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.5);
+        }
+
+        .side-menu a {
+            padding: 12px 32px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .side-menu a:hover {
+            color: #f1f1f1;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .side-menu .closebtn {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+            color: #818181;
+        }
+
+        .side-menu .closebtn:hover {
+            color: white;
+        }
+
+        /* Page View Switcher */
+        .page-view {
+            display: none;
+        }
+
+        .page-view.active-page {
+            display: block;
+        }
+
+        /* Modal Popup Styles */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 3000; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.6); 
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 12% auto; 
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .close-modal {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-modal:hover {
+            color: black;
+        }
+
+        .modal-header {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
+        }
+
+        .modal-body p {
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info-item i {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-top: 3px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+            padding: 3.5rem 1rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0 auto 1.5rem auto;
+            color: #e0e0e0;
+        }
+
+        /* Container Section */
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        /* Faculty Section Styling */
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 2rem;
+        }
+
+        .faculty-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            position: relative;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .faculty-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .faculty-img-wrapper {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 1rem auto;
+            border-radius: 50%;
+            background: var(--light-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid var(--primary);
+        }
+
+        .faculty-img-wrapper i {
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+
+        .faculty-card h3 {
+            font-size: 1.2rem;
+            color: var(--dark-text);
+            margin-bottom: 0.2rem;
+        }
+
+        .faculty-card .designation {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .faculty-card .exp {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        /* Faculty Three Dots Menu Button & Options Bar */
+        .three-dots-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: transparent;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #777;
+            padding: 5px 8px;
+            border-radius: 50%;
+            transition: background 0.2s ease;
+        }
+
+        .three-dots-btn:hover {
+            background: #eee;
+            color: #111;
+        }
+
+        .faculty-action-bar {
+            display: none;
+            position: absolute;
+            top: 45px;
+            right: 15px;
+            background: #ffffff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            border-radius: 8px;
+            width: 170px;
+            z-index: 100;
+            overflow: hidden;
+            border: 1px solid #eee;
+            text-align: left;
+        }
+
+        .faculty-action-bar.show-bar {
+            display: block;
+            animation: fadeIn 0.2s ease;
+        }
+
+        .faculty-action-bar a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            color: #333;
+            transition: background 0.2s ease;
+        }
+
+        .faculty-action-bar a:hover {
+            background: #f0f4f9;
+            color: var(--primary);
+        }
+
+        /* Exam Selection Cards Header */
+        .exam-selector {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .exam-card-btn {
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            padding: 0.9rem 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+            min-width: 200px;
+        }
+
+        .exam-card-btn i {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .exam-card-btn .exam-info h3 {
+            font-size: 1.15rem;
+            margin-bottom: 2px;
+        }
+
+        .exam-card-btn .exam-info p {
+            font-size: 0.8rem;
+            color: #777;
+        }
+
+        .exam-card-btn.active-jee {
+            border-color: var(--primary);
+            background: #eef4ff;
+        }
+        .exam-card-btn.active-jee i { color: var(--primary); }
+
+        .exam-card-btn.active-neet {
+            border-color: var(--neet-color);
+            background: #e0f2f1;
+        }
+        .exam-card-btn.active-neet i { color: var(--neet-color); }
+
+        .exam-card-btn.active-mht {
+            border-color: var(--mht-color);
+            background: #f3e5f5;
+        }
+        .exam-card-btn.active-mht i { color: var(--mht-color); }
+
+        /* Exam Content & Subject Tabs */
+        .exam-content {
+            display: none;
+        }
+
+        .exam-content.active {
+            display: block;
+        }
+
+        .subject-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .sub-btn {
+            background: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 0.5rem 1.5rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .sub-btn.active, .sub-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Subject Tab Styles per Exam */
+        .neet-btn { border-color: var(--neet-color); color: var(--neet-color); }
+        .neet-btn.active, .neet-btn:hover { background: var(--neet-color); color: white; }
+
+        .mht-btn { border-color: var(--mht-color); color: var(--mht-color); }
+        .mht-btn.active, .mht-btn:hover { background: var(--mht-color); color: white; }
+
+        /* Subject Content Display */
+        .subject-content {
+            display: none;
+        }
+
+        .subject-content.active {
+            display: block;
+        }
+
+        /* Chapter Cards Grid */
+        .chapter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .chapter-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-top: 4px solid var(--primary);
+        }
+
+        .chapter-card.neet-card { border-top-color: var(--neet-color); }
+        .chapter-card.mht-card { border-top-color: var(--mht-color); }
+
+        .chapter-card h4 {
+            color: var(--dark-text);
+            font-size: 1.05rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .resource-links {
+            display: flex;
+            gap: 8px;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Black and White Button Styling */
+        .res-btn {
+            flex: 1;
+            min-width: 80px;
+            padding: 0.45rem 0.5rem;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            background-color: #111111;
+            color: #ffffff;
+            border: 1px solid #111111;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.25s ease-in-out;
+        }
+
+        .res-btn:hover {
+            background-color: #ffffff;
+            color: #111111;
+            border-color: #111111;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 4rem;
+        }
+
+        /* Keyframes */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Responsive Layout */
+        @media (max-width: 768px) {
+            .exam-selector {
+                flex-direction: column;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo" onclick="switchPage('page-home')">
+                <i class="fa-solid fa-graduation-cap" style="color: var(--accent);"></i>
+                JEE<span>Prep</span>
+            </a>
+
+            <!-- Header Page Navigation -->
+            <div class="nav-links">
+                <a class="nav-link-btn active-nav" id="nav-home" onclick="switchPage('page-home')"><i class="fa-solid fa-house"></i> Home & Faculty</a>
+                <a class="nav-link-btn" id="nav-resources" onclick="switchPage('page-resources')"><i class="fa-solid fa-book-open"></i> Resources Page</a>
+            </div>
+
+            <!-- Top Right 3-Bar Menu Icon -->
+            <div class="menu-icon" onclick="openNav()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Side Navigation Menu Drawer -->
+    <div id="sideNav" class="side-menu">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a onclick="switchPage('page-home'); closeNav();"><i class="fa-solid fa-house"></i> Home & Faculty</a>
+        <a onclick="switchPage('page-resources'); closeNav();"><i class="fa-solid fa-book-open"></i> Resources Page</a>
+        <a onclick="openModal('founderModal')"><i class="fa-solid fa-user-tie"></i> About the Founder</a>
+        <a onclick="openModal('contactModal')"><i class="fa-solid fa-address-book"></i> Contact Us</a>
+    </div>
+
+    <!-- About Founder Modal -->
+    <div id="founderModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('founderModal')">&times;</span>
+            <div class="modal-header">About the Founder</div>
+            <div class="modal-body">
+                <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Abhishek Sahoo</h3>
+                <p>Welcome to JEEPrep! Guided by Abhishek Sahoo, our portal is dedicated to assisting students in excelling across JEE Main & Advanced, NEET, and MHT CET exams.</p>
+                <p>Our mission is to provide high-quality formula sheets, practice problems, and previous year question resources to streamline your exam preparation.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Us Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('contactModal')">&times;</span>
+            <div class="modal-header">Contact Us</div>
+            <div class="modal-body">
+                <div class="contact-info-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <div>
+                        <strong>Phone:</strong><br>
+                        <a href="tel:9668991936" style="color: #333; text-decoration: none;">9668991936</a>
+                    </div>
+                </div>
+                <div class="contact-info-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <strong>Address:</strong><br>
+                        BL 78 Basanti Colony, Rourkela
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== PAGE 1: HOME & FACULTY MEMBERS ==================== -->
+    <div id="page-home" class="page-view active-page">
+        <!-- Hero Banner -->
+        <section class="hero">
+            <h1>Crack JEE, NEET & MHT CET</h1>
+            <p>Access Chapter-wise Formula Sheets, Daily Practice Problems (DPPs), and Previous Year Questions (PYQs).</p>
+        </section>
+
+        <!-- Faculty Members Section -->
+        <section class="container">
+            <h2 class="section-title">Our Expert Faculty Members</h2>
+            
+            <div class="faculty-grid">
+                <!-- Faculty Card 1 -->
+                <div class="faculty-card">
+                    <button class="three-dots-btn" onclick="toggleFacultyBar(event, 'bar-1')"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                    <!-- Faculty Action Bar Popup -->
+                    <div id="bar-1" class="faculty-action-bar">
+                        <a href="javascript:void(0)" onclick="alert('Viewing Profile of Abhishek Sahoo')"><i class="fa-solid fa-user"></i> View Profile</a>
+                        <a href="javascript:void(0)" onclick="alert('Sending message to Abhishek Sahoo')"><i class="fa-solid fa-envelope"></i> Contact</a>
+                        <a href="javascript:void(0)" onclick="alert('Downloading Schedule')"><i class="fa-solid fa-calendar-days"></i> Schedule</a>
+                    </div>
+                    <div class="faculty-img-wrapper">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <h3>Abhishek Sahoo</h3>
+                    <p class="designation">Founder & Physics Lead</p>
+                    <p class="exp">10+ Years Teaching Experience</p>
+                </div>
+
+                <!-- Faculty Card 2 -->
+                <div class="faculty-card">
+                    <button class="three-dots-btn" onclick="toggleFacultyBar(event, 'bar-2')"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                    <!-- Faculty Action Bar Popup -->
+                    <div id="bar-2" class="faculty-action-bar">
+                        <a href="javascript:void(0)" onclick="alert('Viewing Profile of Dr. K. Sharma')"><i class="fa-solid fa-user"></i> View Profile</a>
+                        <a href="javascript:void(0)" onclick="alert('Sending message to Dr. K. Sharma')"><i class="fa-solid fa-envelope"></i> Contact</a>
+                        <a href="javascript:void(0)" onclick="alert('Downloading Schedule')"><i class="fa-solid fa-calendar-days"></i> Schedule</a>
+                    </div>
+                    <div class="faculty-img-wrapper">
+                        <i class="fa-solid fa-flask"></i>
+                    </div>
+                    <h3>Dr. K. Sharma</h3>
+                    <p class="designation">Chemistry Department Head</p>
+                    <p class="exp">8+ Years Teaching Experience</p>
+                </div>
+
+                <!-- Faculty Card 3 -->
+                <div class="faculty-card">
+                    <button class="three-dots-btn" onclick="toggleFacultyBar(event, 'bar-3')"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                    <!-- Faculty Action Bar Popup -->
+                    <div id="bar-3" class="faculty-action-bar">
+                        <a href="javascript:void(0)" onclick="alert('Viewing Profile of Prof. R. Verma')"><i class="fa-solid fa-user"></i> View Profile</a>
+                        <a href="javascript:void(0)" onclick="alert('Sending message to Prof. R. Verma')"><i class="fa-solid fa-envelope"></i> Contact</a>
+                        <a href="javascript:void(0)" onclick="alert('Downloading Schedule')"><i class="fa-solid fa-calendar-days"></i> Schedule</a>
+                    </div>
+                    <div class="faculty-img-wrapper">
+                        <i class="fa-solid fa-calculator"></i>
+                    </div>
+                    <h3>Prof. R. Verma</h3>
+                    <p class="designation">Mathematics Expert</p>
+                    <p class="exp">12+ Years Teaching Experience</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== PAGE 2: RESOURCES PAGE ==================== -->
+    <div id="page-resources" class="page-view">
+        <section class="container" id="exams">
+            <h2 class="section-title">Study Resources & Materials</h2>
+            
+            <!-- Exam Switcher Bar -->
+            <div class="exam-selector">
+                <div class="exam-card-btn active-jee" onclick="switchExam('jee', this, 'active-jee')">
+                    <i class="fa-solid fa-atom"></i>
+                    <div class="exam-info">
+                        <h3>JEE Main & Adv</h3>
+                        <p>Engineering Entrance</p>
+                    </div>
+                </div>
+
+                <div class="exam-card-btn" onclick="switchExam('neet', this, 'active-neet')">
+                    <i class="fa-solid fa-stethoscope"></i>
+                    <div class="exam-info">
+                        <h3>NEET (UG)</h3>
+                        <p>Medical Entrance</p>
+                    </div>
+                </div>
+
+                <div class="exam-card-btn" onclick="switchExam('mhtcet', this, 'active-mht')">
+                    <i class="fa-solid fa-building-columns"></i>
+                    <div class="exam-info">
+                        <h3>MHT CET</h3>
+                        <p>State Entrance Exam</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== JEE SECTION ==================== -->
+            <div id="jee" class="exam-content active">
+                <!-- JEE Subject Tabs -->
+                <div class="subject-tabs">
+                    <button class="sub-btn active" onclick="switchSubject('jee', 'jee-maths', this)">Mathematics</button>
+                    <button class="sub-btn" onclick="switchSubject('jee', 'jee-physics', this)">Physics</button>
+                    <button class="sub-btn" onclick="switchSubject('jee', 'jee-chemistry', this)">Chemistry</button>
+                </div>
+
+                <!-- JEE Mathematics Chapters -->
+                <div id="jee-maths" class="subject-content active">
+                    <div class="chapter-grid">
+                        <div class="chapter-card"><h4>Sets, Relations & Functions</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
+                        <div class="chapter-card"><h4>Complex Numbers & Quadratic Equations</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
+                        <div class="chapter-card"><h4>Matrices & Determinants</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
+                        <div class="chapter-card"><h4>Permutations & Combinations</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
+                        <div class="chapter-card"><h4>Binomial Theorem</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
+                        <div class="chapter-card"><h4>Sequence & Series</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
+                    </div>
+                </div>
+
+                <!-- JEE Physics Chapters -->
+                <div id="jee-physics" class="subject-content">
+                    <div class="chapter-grid">
+                        <div class="chapter-card"><h4>Units & Measurements</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
+                        <div class="chapter-card"><h4>Kinematics & Laws of Motion</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
+                        <div class="chapter-card"><h4>Work, Energy & Power</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
+                    </div>
+                </div>
+
+                <!-- JEE Chemistry Chapters -->
+                <div id="jee-chemistry" class="subject-content">
+                    <div class="chapter-grid">
+                        <div class="chapter-card"><h4>Some Basic Concepts of Chemistry</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
+                        <div class="chapter-card"><h4>Atomic Structure</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
+                        <div class="chapter-card"><h4>Chemical Bonding</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== NEET SECTION ==================== -->
+            <div id="neet" class="exam-content">
+                <div class="subject-tabs">
+                    <button class="sub-btn neet-btn active">Biology</button>
+                    <button class="sub-btn neet-btn">Physics</button>
+                    <button class="sub-btn neet-btn">Chemistry</button>
+                </div>
+                <div class="chapter-grid">
+                    <div class="chapter-card neet-card"><h4>Human Physiology</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
+                    <div class="chapter-card neet-card"><h4>Genetics & Evolution</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
+                </div>
+            </div>
+
+            <!-- ==================== MHT CET SECTION ==================== -->
+            <div id="mhtcet" class="exam-content">
+                <div class="subject-tabs">
+                    <button class="sub-btn mht-btn active">Mathematics</button>
+                    <button class="sub-btn mht-btn">Physics</button>
+                </div>
+                <div class="chapter-grid">
+                    <div class="chapter-card mht-card"><h4>Mathematical Logic</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 JEEPrep Portal. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        /* Open & Close Side Drawer */
+        function openNav() {
+            document.getElementById("sideNav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("sideNav").style.width = "0";
+        }
+
+        /* Open & Close Modals */
+        function openModal(id) {
+            document.getElementById(id).style.display = "block";
+            closeNav();
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = "none";
+        }
+
+        /* Page Switcher Logic */
+        function switchPage(pageId) {
+            const pages = document.querySelectorAll('.page-view');
+            pages.forEach(p => p.classList.remove('active-page'));
+            
+            document.getElementById(pageId).classList.add('active-page');
+
+            document.getElementById('nav-home').classList.remove('active-nav');
+            document.getElementById('nav-resources').classList.remove('active-nav');
+
+            if(pageId === 'page-home') {
+                document.getElementById('nav-home').classList.add('active-nav');
+            } else {
+                document.getElementById('nav-resources').classList.add('active-nav');
+            }
+            window.scrollTo(0,0);
+        }
+
+        /* Faculty 3-Dots Menu Bar Toggle */
+        function toggleFacultyBar(event, barId) {
+            event.stopPropagation();
+            const allBars = document.querySelectorAll('.faculty-action-bar');
+            allBars.forEach(bar => {
+                if(bar.id !== barId) {
+                    bar.classList.remove('show-bar');
+                }
+            });
+            document.getElementById(barId).classList.toggle('show-bar');
+        }
+
+        /* Close action bar when clicking outside */
+        window.addEventListener('click', function() {
+            const allBars = document.querySelectorAll('.faculty-action-bar');
+            allBars.forEach(bar => bar.classList.remove('show-bar'));
+        });
+
+        /* Switch Exams */
+        function switchExam(examId, btnElement, activeClass) {
+            const contents = document.querySelectorAll('.exam-content');
+            contents.forEach(c => c.classList.remove('active'));
+            
+            const buttons = document.querySelectorAll('.exam-card-btn');
+            buttons.forEach(b => b.className = 'exam-card-btn');
+
+            document.getElementById(examId).classList.add('active');
+            btnElement.classList.add(activeClass);
+        }
+
+        /* Switch Subject Tabs */
+        function switchSubject(examId, subjectId, btnElement) {
+            const parent = document.getElementById(examId);
+            const subjects = parent.querySelectorAll('.subject-content');
+            subjects.forEach(s => s.classList.remove('active'));
+
+            const buttons = parent.querySelectorAll('.sub-btn');
+            buttons.forEach(b => b.classList.remove('active'));
+
+            document.getElementById(subjectId).classList.add('active');
+            btnElement.classList.add('active');
+        }
+    </script>
+</body>
+</html>
