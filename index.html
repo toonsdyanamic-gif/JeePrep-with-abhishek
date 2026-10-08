@@ -1,1144 +1,577 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JEEPrep | JEE, NEET & MHT CET Prep</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <title>Kailash Founding Trust Private Limited</title>
     <style>
-        /* Base Reset & Refined Color Variables */
+        /* CSS RESET & VARIABLES */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         :root {
-            --primary: #0f172a;        /* Slate Dark */
-            --secondary: #1e293b;      /* Slate Medium */
-            --accent: #818cf8;         /* Soft Lavender Accent */
-            --accent-hover: #6366f1;   /* Deep Lavender */
-            --light-bg: #f8fafc;       /* Off-white Slate */
-            --card-bg: #ffffff;
-            --dark-text: #334155;      /* Slate Grey Text */
-            --muted-text: #64748b;
-            --border-color: #e2e8f0;
+            --primary-color: #0d5c3a; /* Trust Green */
+            --secondary-color: #f39c12; /* Warm Gold */
+            --dark-color: #2c3e50;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
         }
 
         body {
+            color: #333;
             line-height: 1.6;
-            color: var(--dark-text);
             background-color: var(--light-bg);
-            position: relative;
         }
 
-        /* Navigation Bar */
+        /* TOP THREE-DOTS MENU & HEADER */
         header {
-            background-color: var(--primary);
-            color: white;
-            padding: 1rem 2rem;
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
         }
 
-        nav {
+        .header-top {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
+            padding: 15px 5%;
+            background-color: var(--white);
+            border-bottom: 1px solid #eee;
         }
 
-        .logo {
-            font-size: 1.6rem;
+        .logo h1 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
             font-weight: 700;
-            color: #fff;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
-        .logo span {
-            color: var(--accent);
+        .logo p {
+            font-size: 0.8rem;
+            color: #666;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-
-        .nav-link-btn {
-            color: #cbd5e1;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 6px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .nav-link-btn:hover, .nav-link-btn.active-nav {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: #fff;
-        }
-
-        /* Hamburger Menu Icon */
-        .menu-icon {
-            font-size: 1.6rem;
-            cursor: pointer;
-            color: #cbd5e1;
-            transition: color 0.3s;
-        }
-
-        .menu-icon:hover {
-            color: white;
-        }
-
-        /* Side Navigation Menu Drawer */
-        .side-menu {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 2000;
-            top: 0;
-            right: 0;
-            background-color: var(--primary);
-            overflow-x: hidden;
-            transition: 0.4s;
-            padding-top: 60px;
-            box-shadow: -4px 0 15px rgba(0,0,0,0.3);
-        }
-
-        .side-menu a {
-            padding: 12px 32px;
-            text-decoration: none;
-            font-size: 1.1rem;
-            color: #94a3b8;
-            display: block;
-            transition: 0.3s;
-            cursor: pointer;
-        }
-
-        .side-menu a:hover {
-            color: #f8fafc;
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-
-        .side-menu .closebtn {
-            position: absolute;
-            top: 10px;
-            right: 25px;
-            font-size: 36px;
-            margin-left: 50px;
-            color: #94a3b8;
-        }
-
-        .side-menu .closebtn:hover {
-            color: white;
-        }
-
-        /* Page View Switcher */
-        .page-view {
-            display: none;
-        }
-
-        .page-view.active-page {
-            display: block;
-        }
-
-        /* Modal Popup Styles */
-        .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 3000; 
-            left: 0;
-            top: 0;
-            width: 100%; 
-            height: 100%; 
-            overflow: auto; 
-            background-color: rgba(15, 23, 42, 0.6); 
-            backdrop-filter: blur(4px);
-            animation: fadeIn 0.3s ease;
-        }
-
-        .modal-content {
-            background-color: #ffffff;
-            margin: 5% auto; 
-            padding: 2rem;
-            border-radius: 16px;
-            max-width: 650px;
-            width: 90%;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        /* THREE DOTS MENU */
+        .three-dots-container {
             position: relative;
-            border: 1px solid var(--border-color);
         }
 
-        .close-modal {
-            color: var(--muted-text);
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
+        .three-dots-btn {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
             cursor: pointer;
-            line-height: 1;
+            color: var(--dark-color);
+            padding: 5px 10px;
+            border-radius: 5px;
         }
 
-        .close-modal:hover {
-            color: var(--primary);
+        .three-dots-btn:hover {
+            background-color: #f0f0f0;
         }
 
-        .modal-header {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            border-bottom: 2px solid #f1f5f9;
-            padding-bottom: 0.5rem;
+        .dots-dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 40px;
+            background-color: var(--white);
+            min-width: 280px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            padding: 15px;
+            z-index: 1001;
         }
 
-        .modal-body p {
-            margin-bottom: 0.8rem;
-            font-size: 0.95rem;
-            color: var(--dark-text);
+        .dots-dropdown.active {
+            display: block;
         }
 
-        /* Founder Modal Faculty Section */
-        .modal-faculty-section {
-            margin-top: 1.5rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border-color);
+        .dots-dropdown h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
         }
 
-        .modal-faculty-section h4 {
-            font-size: 1.1rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
+        .dots-dropdown p {
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            color: #555;
         }
 
-        .modal-faculty-list {
+        /* MAIN NAVIGATION BAR */
+        .main-nav {
+            background-color: var(--primary-color);
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            padding: 0 5%;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item a {
+            display: block;
+            color: var(--white);
+            text-decoration: none;
+            padding: 12px 20px;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .nav-item a:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        /* DROPDOWN NAVIGATION */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--white);
+            min-width: 200px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            list-style: none;
+            z-index: 999;
+        }
+
+        .dropdown-menu a {
+            color: var(--dark-color);
+            border-bottom: 1px solid #eee;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: var(--light-bg);
+            color: var(--primary-color);
+        }
+
+        .nav-item:hover .dropdown-menu {
+            display: block;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            height: 450px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
-        }
-
-        .modal-faculty-item {
-            display: flex;
+            justify-content: center;
             align-items: center;
-            gap: 12px;
-            background: #f8fafc;
-            padding: 10px 14px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-        }
-
-        .modal-faculty-item i {
-            font-size: 1.2rem;
-            color: var(--accent-hover);
-            background: #e0e7ff;
-            padding: 10px;
-            border-radius: 50%;
-        }
-
-        .modal-faculty-info h5 {
-            font-size: 0.95rem;
-            color: var(--primary);
-            margin-bottom: 2px;
-        }
-
-        .modal-faculty-info p {
-            font-size: 0.8rem;
-            color: var(--muted-text);
-            margin-bottom: 0;
-        }
-
-        .contact-info-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 1rem;
-        }
-
-        .contact-info-item i {
-            font-size: 1.3rem;
-            color: var(--accent-hover);
-            margin-top: 3px;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
+            color: var(--white);
             text-align: center;
-            padding: 4rem 1rem;
+            padding: 0 20px;
         }
 
-        .hero h1 {
+        .hero h2 {
             font-size: 2.5rem;
-            margin-bottom: 0.8rem;
-            font-weight: 700;
+            margin-bottom: 15px;
         }
 
         .hero p {
-            font-size: 1.1rem;
-            max-width: 650px;
-            margin: 0 auto 1.5rem auto;
-            color: #94a3b8;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 25px;
         }
 
-        /* Container Section */
-        .container {
-            max-width: 1200px;
-            margin: 3rem auto;
-            padding: 0 1rem;
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #d35400;
+        }
+
+        /* SECTIONS GENERAL */
+        section {
+            padding: 60px 8%;
         }
 
         .section-title {
             text-align: center;
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-            font-weight: 700;
+            margin-bottom: 40px;
         }
 
-        /* Faculty Section Styling */
-        .faculty-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 2rem;
-        }
-
-        .faculty-card {
-            background: white;
-            border-radius: 12px;
-            padding: 1.8rem 1.5rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            border: 1px solid var(--border-color);
+        .section-title h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
             position: relative;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: inline-block;
+            padding-bottom: 10px;
         }
 
-        .faculty-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.06);
-        }
-
-        .faculty-img-wrapper {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1rem auto;
-            border-radius: 50%;
-            background: #f1f5f9;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid var(--border-color);
-        }
-
-        .faculty-img-wrapper i {
-            font-size: 2.2rem;
-            color: var(--secondary);
-        }
-
-        .faculty-card h3 {
-            font-size: 1.15rem;
-            color: var(--primary);
-            margin-bottom: 0.2rem;
-            font-weight: 600;
-        }
-
-        .faculty-card .designation {
-            font-size: 0.85rem;
-            color: var(--accent-hover);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .faculty-card .exp {
-            font-size: 0.8rem;
-            color: var(--muted-text);
-        }
-
-        /* Three Dots Button */
-        .three-dots-btn {
+        .section-title h2::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary-color);
             position: absolute;
-            top: 15px;
-            right: 15px;
-            background: transparent;
-            border: none;
-            font-size: 1.1rem;
-            cursor: pointer;
-            color: var(--muted-text);
-            padding: 5px 8px;
-            border-radius: 50%;
-            transition: background 0.2s ease;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
-        .three-dots-btn:hover {
-            background: #f1f5f9;
-            color: var(--primary);
-        }
-
-        .faculty-action-bar {
-            display: none;
-            position: absolute;
-            top: 45px;
-            right: 15px;
-            background: #ffffff;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            border-radius: 8px;
-            width: 170px;
-            z-index: 100;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            text-align: left;
-        }
-
-        .faculty-action-bar.show-bar {
-            display: block;
-            animation: fadeIn 0.2s ease;
-        }
-
-        .faculty-action-bar a {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 14px;
-            text-decoration: none;
-            font-size: 0.85rem;
-            color: var(--dark-text);
-            transition: background 0.2s ease;
-        }
-
-        .faculty-action-bar a:hover {
-            background: #f8fafc;
-            color: var(--accent-hover);
-        }
-
-        /* Exam Selection Cards Header */
-        .exam-selector {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .exam-card-btn {
-            background: white;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1rem 1.8rem;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-            min-width: 210px;
-        }
-
-        .exam-card-btn i {
-            font-size: 1.8rem;
-            color: var(--muted-text);
-        }
-
-        .exam-card-btn .exam-info h3 {
-            font-size: 1.05rem;
-            color: var(--primary);
-            margin-bottom: 2px;
-        }
-
-        .exam-card-btn .exam-info p {
-            font-size: 0.8rem;
-            color: var(--muted-text);
-        }
-
-        /* Active Neutral Selector Tabs */
-        .exam-card-btn.active-tab {
-            border-color: var(--accent-hover);
-            background: #f1f5f9;
-        }
-        .exam-card-btn.active-tab i {
-            color: var(--accent-hover);
-        }
-
-        /* Exam Content & Subject Tabs */
-        .exam-content {
-            display: none;
-        }
-
-        .exam-content.active {
-            display: block;
-        }
-
-        .subject-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .sub-btn {
-            background: white;
-            border: 1px solid var(--border-color);
-            color: var(--dark-text);
-            padding: 0.5rem 1.4rem;
-            font-size: 0.9rem;
-            font-weight: 500;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .sub-btn.active, .sub-btn:hover {
-            background: var(--secondary);
-            color: white;
-            border-color: var(--secondary);
-        }
-
-        /* Subject Content Display */
-        .subject-content {
-            display: none;
-        }
-
-        .subject-content.active {
-            display: block;
-        }
-
-        /* Chapter Cards Grid */
-        .chapter-grid {
+        /* INITIATIVES CARDS */
+        .cards-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
-        .chapter-card {
-            background: white;
-            border-radius: 10px;
-            padding: 1.2rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        .card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-body h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        /* FOUNDER SECTION */
+        .founder-section {
+            background-color: var(--white);
+        }
+
+        .founder-container {
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            border: 1px solid var(--border-color);
-            border-top: 3px solid var(--secondary);
-        }
-
-        .chapter-card h4 {
-            color: var(--primary);
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-        }
-
-        .resource-links {
-            display: flex;
-            gap: 8px;
-            margin-top: 1rem;
+            align-items: center;
+            gap: 40px;
             flex-wrap: wrap;
         }
 
-        /* Slate Action Buttons */
-        .res-btn {
+        .founder-img {
             flex: 1;
-            min-width: 80px;
-            padding: 0.45rem 0.5rem;
+            min-width: 280px;
             text-align: center;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            background-color: var(--secondary);
-            color: #ffffff;
-            border: 1px solid var(--secondary);
-            transition: all 0.2s ease-in-out;
         }
 
-        .res-btn:hover {
-            background-color: #ffffff;
-            color: var(--secondary);
+        .founder-img img {
+            width: 100%;
+            max-width: 320px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            border: 4px solid var(--primary-color);
         }
 
-        /* Footer */
+        .founder-details {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .founder-details h3 {
+            font-size: 1.8rem;
+            color: var(--dark-color);
+        }
+
+        .founder-details h4 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        /* DONATION SECTION */
+        .donation-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .donate-box {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .donate-box h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* FOOTER */
         footer {
-            background-color: var(--primary);
-            color: #94a3b8;
-            text-align: center;
-            padding: 1.5rem;
-            margin-top: 4rem;
+            background-color: var(--dark-color);
+            color: var(--white);
+            padding: 40px 8% 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col h4 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .footer-col p, .footer-col a {
+            color: #ccc;
+            text-decoration: none;
             font-size: 0.9rem;
+            margin-bottom: 8px;
+            display: block;
         }
 
-        /* Keyframes */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            font-size: 0.85rem;
+            color: #aaa;
         }
 
-        /* Responsive Layout */
+        /* RESPONSIVE DESIGN */
         @media (max-width: 768px) {
-            .exam-selector {
+            .nav-list {
                 flex-direction: column;
             }
-            .nav-links {
-                display: none;
+            .dropdown-menu {
+                position: static;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation Header -->
+    <!-- HEADER & NAVBAR -->
     <header>
-        <nav>
-            <a href="#" class="logo" onclick="switchPage('page-home')">
-                <i class="fa-solid fa-graduation-cap" style="color: var(--accent);"></i>
-                JEE<span>Prep</span>
-            </a>
-
-            <!-- Header Page Navigation -->
-            <div class="nav-links">
-                <a class="nav-link-btn active-nav" id="nav-home" onclick="switchPage('page-home')"><i class="fa-solid fa-house"></i> Home & Faculty</a>
-                <a class="nav-link-btn" id="nav-resources" onclick="switchPage('page-resources')"><i class="fa-solid fa-book-open"></i> Resources Page</a>
+        <div class="header-top">
+            <div class="logo">
+                <h1>KAILASH FOUNDING TRUST PVT LTD</h1>
+                <p>Empowering Communities & Preserving Human Dignity</p>
             </div>
-
-            <!-- Top Right 3-Bar Menu Icon -->
-            <div class="menu-icon" onclick="openNav()">
-                <i class="fa-solid fa-bars"></i>
+            
+            <!-- THREE DOTS MENU -->
+            <div class="three-dots-container">
+                <button class="three-dots-btn" id="dotsBtn" title="Quick Contact & Info">&#8413;</button>
+                <div class="dots-dropdown" id="dotsDropdown">
+                    <h4>Contact & Address</h4>
+                    <p><strong>Phone:</strong> 966991938</p>
+                    <p><strong>Address:</strong> Bl 78, Basanti Colony, Rourkela, Odisha</p>
+                    <p><strong>Registration:</strong> Newly Formed Private Limited Trust</p>
+                    <p><strong>Email:</strong> contact@kailashtrust.org</p>
+                </div>
             </div>
+        </div>
+
+        <!-- MULTI-NAVIGATION BAR -->
+        <nav class="main-nav">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="#home">Home</a></li>
+                <li class="nav-item"><a href="#about">About Us</a></li>
+                <li class="nav-item">
+                    <a href="#causes">Our Initiatives &#9662;</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#schools">Free Schools</a></li>
+                        <li><a href="#oldage">Old Age Homes</a></li>
+                        <li><a href="#hospitals">Hospital Chain</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#founder">Leadership &#9662;</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#founder">Abhishek Sahoo (Founder)</a></li>
+                        <li><a href="#trustees">Trustees & Board</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="#donate">Donate Now</a></li>
+                <li class="nav-item"><a href="#contact">Contact</a></li>
+            </ul>
         </nav>
     </header>
 
-    <!-- Side Navigation Menu Drawer -->
-    <div id="sideNav" class="side-menu">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a onclick="switchPage('page-home'); closeNav();"><i class="fa-solid fa-house"></i> Home & Faculty</a>
-        <a onclick="switchPage('page-resources'); closeNav();"><i class="fa-solid fa-book-open"></i> Resources Page</a>
-        <a onclick="openModal('founderModal')"><i class="fa-solid fa-user-tie"></i> About the Founder</a>
-        <a onclick="openModal('contactModal')"><i class="fa-solid fa-address-book"></i> Contact Us</a>
-    </div>
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <h2>Building Schools, Care Homes, and Hospitals for All</h2>
+        <p>A non-profit initiative dedicated to offering free education to underprivileged children, compassionate care for the elderly, and healthcare access to those in need.</p>
+        <a href="#donate" class="btn-primary">Support Our Cause</a>
+    </section>
 
-    <!-- About Founder & Faculty Modal -->
-    <div id="founderModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('founderModal')">&times;</span>
-            <div class="modal-header">About the Founder</div>
-            <div class="modal-body">
-                <h3 style="color: var(--primary); margin-bottom: 0.5rem; font-weight: 600;">Abhishek Sahoo</h3>
-                <p>Welcome to JEEPrep! Guided by Abhishek Sahoo, our portal is dedicated to assisting students in excelling across JEE Main & Advanced, NEET, and MHT CET exams.</p>
-                <p>Our mission is to provide high-quality formula sheets, practice problems, and previous year question resources to streamline your exam preparation.</p>
-                
-                <!-- Faculty Members Below Founder -->
-                <div class="modal-faculty-section">
-                    <h4>Core Faculty Members</h4>
-                    <div class="modal-faculty-list">
-                        <div class="modal-faculty-item">
-                            <i class="fa-solid fa-user-tie"></i>
-                            <div class="modal-faculty-info">
-                                <h5>Abhishek Sahoo</h5>
-                                <p>Founder & Physics Lead — 10+ Yrs Exp.</p>
-                            </div>
-                        </div>
-                        <div class="modal-faculty-item">
-                            <i class="fa-solid fa-flask"></i>
-                            <div class="modal-faculty-info">
-                                <h5>Dr. K. Sharma</h5>
-                                <p>Head of Chemistry — 8+ Yrs Exp.</p>
-                            </div>
-                        </div>
-                        <div class="modal-faculty-item">
-                            <i class="fa-solid fa-calculator"></i>
-                            <div class="modal-faculty-info">
-                                <h5>Prof. R. Verma</h5>
-                                <p>Mathematics Department Head — 12+ Yrs Exp.</p>
-                            </div>
-                        </div>
-                    </div>
+    <!-- ABOUT SECTION -->
+    <section id="about">
+        <div class="section-title">
+            <h2>About The Trust</h2>
+        </div>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto; color: #555;">
+            <strong>Kailash Founding Trust Private Limited</strong> is a newly established welfare organization formed with a mission to uplift underserved communities. Operating out of Rourkela, Odisha, we strive to build sustainable infrastructure that offers education, housing, and life-saving medical aid.
+        </p>
+    </section>
+
+    <!-- KEY INITIATIVES SECTION -->
+    <section id="causes" style="background-color: #fff;">
+        <div class="section-title">
+            <h2>Our Core Initiatives</h2>
+        </div>
+        <div class="cards-container">
+            <!-- School Initiative -->
+            <div class="card" id="schools">
+                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80" alt="Schools for poor children">
+                <div class="card-body">
+                    <h3>Schools for Underprivileged</h3>
+                    <p>Establishing free primary and secondary schools to ensure that poverty never stops a child from gaining knowledge and securing a bright future.</p>
+                </div>
+            </div>
+
+            <!-- Old Age Home Initiative -->
+            <div class="card" id="oldage">
+                <img src="https://images.unsplash.com/photo-1581579438747-1dc8d1e05fec?auto=format&fit=crop&w=600&q=80" alt="Old Age Home">
+                <div class="card-body">
+                    <h3>Old Age Homes</h3>
+                    <p>Building secure, comfortable homes for senior citizens, offering medical care, shelter, and companionship for their golden years.</p>
+                </div>
+            </div>
+
+            <!-- Hospital Chain Initiative -->
+            <div class="card" id="hospitals">
+                <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=600&q=80" alt="Hospital Chain">
+                <div class="card-body">
+                    <h3>Hospital Chains</h3>
+                    <p>Setting up affordable and charitable hospital facilities in underserved areas to provide quality treatments and emergency care.</p>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Contact Us Modal -->
-    <div id="contactModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('contactModal')">&times;</span>
-            <div class="modal-header">Contact Us</div>
-            <div class="modal-body">
-                <div class="contact-info-item">
-                    <i class="fa-solid fa-phone"></i>
-                    <div>
-                        <strong>Phone:</strong><br>
-                        <a href="tel:9668991936" style="color: var(--dark-text); text-decoration: none;">9668991936</a>
-                    </div>
-                </div>
-                <div class="contact-info-item">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <div>
-                        <strong>Address:</strong><br>
-                        BL 78 Basanti Colony, Rourkela
-                    </div>
-                </div>
+    <!-- ABOUT THE FOUNDER SECTION -->
+    <section id="founder" class="founder-section">
+        <div class="section-title">
+            <h2>About The Founder</h2>
+        </div>
+        <div class="founder-container">
+            <div class="founder-img">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80" alt="Abhishek Sahoo - Founder">
+            </div>
+            <div class="founder-details">
+                <h3>Abhishek Sahoo</h3>
+                <h4>Founder & Managing Director</h4>
+                <p>
+                    Abhishek Sahoo founded <strong>Kailash Founding Trust Private Limited</strong> with a vision to systematically eliminate social inequality through education, shelter, and healthcare infrastructure. Driven by a deep commitment to social welfare, his goal is to bridge the gap for underprivileged families and senior citizens across Odisha and beyond.
+                </p>
+                <p style="margin-top: 10px;">
+                    Under his leadership, the trust is establishing foundational programs aimed at sustainable, long-term impact.
+                </p>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- ==================== PAGE 1: HOME & FACULTY MEMBERS ==================== -->
-    <div id="page-home" class="page-view active-page">
-        <!-- Hero Banner -->
-        <section class="hero">
-            <h1>Crack JEE, NEET & MHT CET</h1>
-            <p>Access Chapter-wise Formula Sheets, Daily Practice Problems (DPPs), and Previous Year Questions (PYQs).</p>
-        </section>
-
-        <!-- Faculty Members Section -->
-        <section class="container">
-            <h2 class="section-title">Our Expert Faculty Members</h2>
-            
-            <div class="faculty-grid">
-                <!-- Faculty Card 1 -->
-                <div class="faculty-card">
-                    <button class="three-dots-btn" onclick="toggleFacultyBar(event, 'bar-1')"><i class="fa-solid fa-ellipsis-vertical"></i></button>
-                    <!-- Faculty Action Bar Popup -->
-                    <div id="bar-1" class="faculty-action-bar">
-                        <a href="javascript:void(0)" onclick="alert('Viewing Profile of Abhishek Sahoo')"><i class="fa-solid fa-user"></i> View Profile</a>
-                        <a href="javascript:void(0)" onclick="alert('Sending message to Abhishek Sahoo')"><i class="fa-solid fa-envelope"></i> Contact</a>
-                        <a href="javascript:void(0)" onclick="alert('Downloading Schedule')"><i class="fa-solid fa-calendar-days"></i> Schedule</a>
-                    </div>
-                    <div class="faculty-img-wrapper">
-                        <i class="fa-solid fa-user-tie"></i>
-                    </div>
-                    <h3>Abhishek Sahoo</h3>
-                    <p class="designation">Founder & Physics Lead</p>
-                    <p class="exp">10+ Years Teaching Experience</p>
-                </div>
-
-                <!-- Faculty Card 2 -->
-                <div class="faculty-card">
-                    <button class="three-dots-btn" onclick="toggleFacultyBar(event, 'bar-2')"><i class="fa-solid fa-ellipsis-vertical"></i></button>
-                    <!-- Faculty Action Bar Popup -->
-                    <div id="bar-2" class="faculty-action-bar">
-                        <a href="javascript:void(0)" onclick="alert('Viewing Profile of Dr. K. Sharma')"><i class="fa-solid fa-user"></i> View Profile</a>
-                        <a href="javascript:void(0)" onclick="alert('Sending message to Dr. K. Sharma')"><i class="fa-solid fa-envelope"></i> Contact</a>
-                        <a href="javascript:void(0)" onclick="alert('Downloading Schedule')"><i class="fa-solid fa-calendar-days"></i> Schedule</a>
-                    </div>
-                    <div class="faculty-img-wrapper">
-                        <i class="fa-solid fa-flask"></i>
-                    </div>
-                    <h3>Dr. K. Sharma</h3>
-                    <p class="designation">Chemistry Department Head</p>
-                    <p class="exp">8+ Years Teaching Experience</p>
-                </div>
-
-                <!-- Faculty Card 3 -->
-                <div class="faculty-card">
-                    <button class="three-dots-btn" onclick="toggleFacultyBar(event, 'bar-3')"><i class="fa-solid fa-ellipsis-vertical"></i></button>
-                    <!-- Faculty Action Bar Popup -->
-                    <div id="bar-3" class="faculty-action-bar">
-                        <a href="javascript:void(0)" onclick="alert('Viewing Profile of Prof. R. Verma')"><i class="fa-solid fa-user"></i> View Profile</a>
-                        <a href="javascript:void(0)" onclick="alert('Sending message to Prof. R. Verma')"><i class="fa-solid fa-envelope"></i> Contact</a>
-                        <a href="javascript:void(0)" onclick="alert('Downloading Schedule')"><i class="fa-solid fa-calendar-days"></i> Schedule</a>
-                    </div>
-                    <div class="faculty-img-wrapper">
-                        <i class="fa-solid fa-calculator"></i>
-                    </div>
-                    <h3>Prof. R. Verma</h3>
-                    <p class="designation">Mathematics Expert</p>
-                    <p class="exp">12+ Years Teaching Experience</p>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- ==================== PAGE 2: RESOURCES PAGE ==================== -->
-    <div id="page-resources" class="page-view">
-        <section class="container" id="exams">
-            <h2 class="section-title">Study Resources & Materials</h2>
-            
-            <!-- Exam Switcher Bar -->
-            <div class="exam-selector">
-                <div class="exam-card-btn active-tab" onclick="switchExam('jee', this)">
-                    <i class="fa-solid fa-atom"></i>
-                    <div class="exam-info">
-                        <h3>JEE Main & Adv</h3>
-                        <p>Engineering Entrance</p>
-                    </div>
-                </div>
-
-                <div class="exam-card-btn" onclick="switchExam('neet', this)">
-                    <i class="fa-solid fa-stethoscope"></i>
-                    <div class="exam-info">
-                        <h3>NEET (UG)</h3>
-                        <p>Medical Entrance</p>
-                    </div>
-                </div>
-
-                <div class="exam-card-btn" onclick="switchExam('mhtcet', this)">
-                    <i class="fa-solid fa-building-columns"></i>
-                    <div class="exam-info">
-                        <h3>MHT CET</h3>
-                        <p>State Entrance Exam</p>
-                    </div>
-                </div>
+    <!-- DONATION SECTION -->
+    <section id="donate">
+        <div class="section-title">
+            <h2>Support Our Work</h2>
+        </div>
+        <p style="text-align: center; color: #666;">Your contributions help build schools, care centers, and health facilities.</p>
+        
+        <div class="donation-options">
+            <div class="donate-box">
+                <h3>One-Time Donation</h3>
+                <p>Contribute towards immediate building costs and operational materials.</p>
+                <br>
+                <button class="btn-primary">Donate Funds</button>
             </div>
 
-            <!-- ==================== JEE SECTION ==================== -->
-            <div id="jee" class="exam-content active">
-                <!-- JEE Subject Tabs -->
-                <div class="subject-tabs">
-                    <button class="sub-btn active" onclick="switchSubject('jee', 'jee-maths', this)">Mathematics</button>
-                    <button class="sub-btn" onclick="switchSubject('jee', 'jee-physics', this)">Physics</button>
-                    <button class="sub-btn" onclick="switchSubject('jee', 'jee-chemistry', this)">Chemistry</button>
-                </div>
-
-                <!-- JEE Mathematics Chapters -->
-                <div id="jee-maths" class="subject-content active">
-                    <div class="chapter-grid">
-                        <div class="chapter-card"><h4>Sets, Relations & Functions</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Complex Numbers & Quadratic Equations</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Matrices & Determinants</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Permutations & Combinations</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Binomial Theorem & Its Applications</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Sequence & Series</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Limits, Continuity & Differentiability</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Applications of Derivatives</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Indefinite & Definite Integrals</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Differential Equations</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Coordinate Geometry (Straight Lines & Circles)</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Conic Sections (Parabola, Ellipse, Hyperbola)</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Vector Algebra</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Three-Dimensional Geometry (3D)</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Trigonometry & Inverse Trigonometric Functions</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Statistics & Probability</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                    </div>
-                </div>
-
-                <!-- JEE Physics Chapters -->
-                <div id="jee-physics" class="subject-content">
-                    <div class="chapter-grid">
-                        <div class="chapter-card"><h4>Units & Measurements</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Kinematics (Motion in 1D & 2D)</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Laws of Motion & Friction</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Work, Energy & Power</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Rotational Motion & Centre of Mass</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Gravitation</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Properties of Solids & Fluids</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Thermodynamics & KTG</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Oscillations & Waves (SHM)</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Electrostatics & Capacitance</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Current Electricity</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Magnetic Effects of Current & Magnetism</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Electromagnetic Induction & AC</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Electromagnetic Waves</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Ray Optics & Wave Optics</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Dual Nature of Radiation & Matter</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Atoms & Nuclei</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Semiconductor Electronics</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Experimental Physics Skills</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                    </div>
-                </div>
-
-                <!-- JEE Chemistry Chapters -->
-                <div id="jee-chemistry" class="subject-content">
-                    <div class="chapter-grid">
-                        <div class="chapter-card"><h4>Some Basic Concepts of Chemistry</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Atomic Structure</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Chemical Bonding & Molecular Structure</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Chemical Thermodynamics</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Solutions & Colligative Properties</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Equilibrium (Chemical & Ionic)</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Redox Reactions & Electrochemistry</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Chemical Kinetics</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Classification of Elements & Periodicity</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>p-Block Elements</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>d- and f-Block Elements</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Coordination Compounds</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>General Organic Chemistry (GOC)</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Hydrocarbons</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Haloalkanes & Haloarenes</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Alcohols, Phenols & Ethers</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Aldehydes, Ketones & Carboxylic Acids</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Amines & Organic Nitrogen Compounds</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Biomolecules</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Principles Related to Practical Chemistry</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                    </div>
-                </div>
+            <div class="donate-box">
+                <h3>Sponsor a Child / Elder</h3>
+                <p>Provide monthly educational supplies or senior residential support.</p>
+                <br>
+                <button class="btn-primary">Become a Sponsor</button>
             </div>
 
-            <!-- ==================== NEET SECTION ==================== -->
-            <div id="neet" class="exam-content">
-                <div class="subject-tabs">
-                    <button class="sub-btn active" onclick="switchSubject('neet', 'neet-bio', this)">Biology</button>
-                    <button class="sub-btn" onclick="switchSubject('neet', 'neet-physics', this)">Physics</button>
-                    <button class="sub-btn" onclick="switchSubject('neet', 'neet-chemistry', this)">Chemistry</button>
-                </div>
-
-                <!-- NEET Biology Chapters -->
-                <div id="neet-bio" class="subject-content active">
-                    <div class="chapter-grid">
-                        <div class="chapter-card"><h4>The Living World</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Biological Classification</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Plant Kingdom</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Animal Kingdom</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Morphology of Flowering Plants</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Anatomy of Flowering Plants</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Structural Organisation in Animals</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Cell: The Unit of Life</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Cell Cycle & Cell Division</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Photosynthesis in Higher Plants</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Respiration in Plants</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Plant Growth & Development</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Breathing & Exchange of Gases</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Body Fluids & Circulation</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Excretory Products & Elimination</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Locomotion & Movement</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Neural Control & Coordination</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Chemical Coordination & Integration</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Sexual Reproduction in Flowering Plants</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Human Reproduction</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Reproductive Health</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Principles of Inheritance & Variation</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Molecular Basis of Inheritance</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Evolution</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Human Health & Disease</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Microbes in Human Welfare</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Biotechnology: Principles & Processes</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Biotechnology & Its Applications</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Organisms & Populations</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Ecosystem</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Biodiversity & Conservation</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                    </div>
-                </div>
-
-                <!-- NEET Physics Chapters -->
-                <div id="neet-physics" class="subject-content">
-                    <div class="chapter-grid">
-                        <div class="chapter-card"><h4>Units & Measurements</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Kinematics</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Laws of Motion</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Work, Energy & Power</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>System of Particles & Rotational Motion</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Gravitation</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Mechanical Properties of Solids & Fluids</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Thermal Properties of Matter & Thermodynamics</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Oscillations & Waves</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Electrostatics & Capacitance</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Current Electricity</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Magnetic Effects of Current & Magnetism</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Electromagnetic Induction & Alternating Currents</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Ray Optics & Wave Optics</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Dual Nature of Matter & Radiation</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Atoms & Nuclei</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Semiconductor Electronics</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                    </div>
-                </div>
-
-                <!-- NEET Chemistry Chapters -->
-                <div id="neet-chemistry" class="subject-content">
-                    <div class="chapter-grid">
-                        <div class="chapter-card"><h4>Some Basic Concepts of Chemistry</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Structure of Atom</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Chemical Bonding & Molecular Structure</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Thermodynamics</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Solutions</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Equilibrium</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Redox Reactions & Electrochemistry</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Chemical Kinetics</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Classification of Elements & Periodicity</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>p-Block Elements</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>d- and f-Block Elements</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Coordination Compounds</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Organic Chemistry: Principles & Techniques</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Hydrocarbons</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Haloalkanes & Haloarenes</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Alcohols, Phenols & Ethers</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Aldehydes, Ketones & Carboxylic Acids</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Amines</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Biomolecules</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                    </div>
-                </div>
+            <div class="donate-box">
+                <h3>Direct Bank Transfer / UPI</h3>
+                <p><strong>UPI ID:</strong> kailashfoundation@upi</p>
+                <p><strong>Account No:</strong> XXXXXXXXXXXX</p>
+                <p><strong>IFSC Code:</strong> SBIN000XXXX</p>
             </div>
+        </div>
+    </section>
 
-            <!-- ==================== MHT CET SECTION ==================== -->
-            <div id="mhtcet" class="exam-content">
-                <div class="subject-tabs">
-                    <button class="sub-btn active" onclick="switchSubject('mhtcet', 'mht-maths', this)">Mathematics</button>
-                    <button class="sub-btn" onclick="switchSubject('mhtcet', 'mht-physics', this)">Physics</button>
-                    <button class="sub-btn" onclick="switchSubject('mhtcet', 'mht-chemistry', this)">Chemistry</button>
-                </div>
-
-                <!-- MHT CET Mathematics Chapters -->
-                <div id="mht-maths" class="subject-content active">
-                    <div class="chapter-grid">
-                        <div class="chapter-card"><h4>Mathematical Logic</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Matrices</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Trigonometric Functions</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Pair of Straight Lines</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Vectors</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Three Dimensional Geometry</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Line & Plane</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Linear Programming</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Differentiation & Continuity</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Applications of Derivatives</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Indefinite & Definite Integration</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Application of Definite Integration</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Differential Equations</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Probability Distribution & Binomial Distribution</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                    </div>
-                </div>
-
-                <!-- MHT CET Physics Chapters -->
-                <div id="mht-physics" class="subject-content">
-                    <div class="chapter-grid">
-                        <div class="chapter-card"><h4>Rotational Dynamics</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Mechanical Properties of Fluids</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Kinetic Theory of Gases & Radiation</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Thermodynamics</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Oscillations</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Superposition of Waves</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Wave Optics</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Electrostatics</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Current Electricity</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Magnetic Fields due to Electric Current</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Magnetic Materials</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Electromagnetic Induction</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>AC Circuits</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Dual Nature of Radiation & Matter</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Structure of Atoms & Nuclei</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Semiconductor Devices</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                    </div>
-                </div>
-
-                <!-- MHT CET Chemistry Chapters -->
-                <div id="mht-chemistry" class="subject-content">
-                    <div class="chapter-grid">
-                        <div class="chapter-card"><h4>Solid State</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Solutions</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Ionic Equilibria</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Chemical Thermodynamics</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Electrochemistry</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Chemical Kinetics</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Elements of Groups 16, 17 & 18</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Transition & Inner Transition Elements</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Coordination Compounds</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Halogen Derivatives</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Alcohols, Phenols & Ethers</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Aldehydes, Ketones & Carboxylic Acids</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Amines</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Biomolecules</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Introduction to Polymer Chemistry</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                        <div class="chapter-card"><h4>Green Chemistry & Nanotechnology</h4><div class="resource-links"><a href="#" class="res-btn"><i class="fa-solid fa-file-lines"></i> Formula</a><a href="#" class="res-btn"><i class="fa-solid fa-pen-to-square"></i> DPP</a><a href="#" class="res-btn"><i class="fa-solid fa-clock-rotate-left"></i> PYQs</a></div></div>
-                    </div>
-                </div>
+    <!-- FOOTER SECTION -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>Kailash Founding Trust</h4>
+                <p>Newly formed organization dedicated to education, elder care, and medical infrastructure for the poor.</p>
             </div>
-        </section>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 JEEPrep Portal. All rights reserved.</p>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <a href="#about">About Us</a>
+                <a href="#causes">Our Initiatives</a>
+                <a href="#founder">Founder's Message</a>
+                <a href="#donate">Donation Options</a>
+            </div>
+            <div class="footer-col">
+                <h4>Head Office</h4>
+                <p>Bl 78, Basanti Colony</p>
+                <p>Rourkela, Odisha, India</p>
+                <p><strong>Phone:</strong> 966991938</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Kailash Founding Trust Private Limited. All Rights Reserved.</p>
+        </div>
     </footer>
 
-    <!-- JavaScript Logic -->
+    <!-- JAVASCRIPT FOR INTERACTIVITY -->
     <script>
-        /* Open & Close Side Drawer */
-        function openNav() {
-            document.getElementById("sideNav").style.width = "260px";
-        }
+        // Toggle Top Right Three-Dots Dropdown Menu
+        const dotsBtn = document.getElementById('dotsBtn');
+        const dotsDropdown = document.getElementById('dotsDropdown');
 
-        function closeNav() {
-            document.getElementById("sideNav").style.width = "0";
-        }
-
-        /* Open & Close Modals */
-        function openModal(id) {
-            document.getElementById(id).style.display = "block";
-            closeNav();
-        }
-
-        function closeModal(id) {
-            document.getElementById(id).style.display = "none";
-        }
-
-        /* Page Switcher Logic */
-        function switchPage(pageId) {
-            const pages = document.querySelectorAll('.page-view');
-            pages.forEach(p => p.classList.remove('active-page'));
-            
-            document.getElementById(pageId).classList.add('active-page');
-
-            document.getElementById('nav-home').classList.remove('active-nav');
-            document.getElementById('nav-resources').classList.remove('active-nav');
-
-            if(pageId === 'page-home') {
-                document.getElementById('nav-home').classList.add('active-nav');
-            } else {
-                document.getElementById('nav-resources').classList.add('active-nav');
-            }
-            window.scrollTo(0,0);
-        }
-
-        /* Faculty 3-Dots Menu Bar Toggle */
-        function toggleFacultyBar(event, barId) {
-            event.stopPropagation();
-            const allBars = document.querySelectorAll('.faculty-action-bar');
-            allBars.forEach(bar => {
-                if(bar.id !== barId) {
-                    bar.classList.remove('show-bar');
-                }
-            });
-            document.getElementById(barId).classList.toggle('show-bar');
-        }
-
-        /* Close action bar when clicking outside */
-        window.addEventListener('click', function() {
-            const allBars = document.querySelectorAll('.faculty-action-bar');
-            allBars.forEach(bar => bar.classList.remove('show-bar'));
+        dotsBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dotsDropdown.classList.toggle('active');
         });
 
-        /* Switch Exams */
-        function switchExam(examId, btnElement) {
-            const contents = document.querySelectorAll('.exam-content');
-            contents.forEach(c => c.classList.remove('active'));
-            
-            const buttons = document.querySelectorAll('.exam-card-btn');
-            buttons.forEach(b => b.classList.remove('active-tab'));
-
-            document.getElementById(examId).classList.add('active');
-            btnElement.classList.add('active-tab');
-        }
-
-        /* Switch Subject Tabs */
-        function switchSubject(examId, subjectId, btnElement) {
-            const parent = document.getElementById(examId);
-            const subjects = parent.querySelectorAll('.subject-content');
-            subjects.forEach(s => s.classList.remove('active'));
-
-            const buttons = parent.querySelectorAll('.sub-btn');
-            buttons.forEach(b => b.classList.remove('active'));
-
-            document.getElementById(subjectId).classList.add('active');
-            btnElement.classList.add('active');
-        }
+        // Close dropdown when clicking outside
+        document.addEventListener('click', () => {
+            if (dotsDropdown.classList.contains('active')) {
+                dotsDropdown.classList.remove('active');
+            }
+        });
     </script>
 </body>
 </html>
